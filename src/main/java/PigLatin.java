@@ -1,5 +1,5 @@
 public class PigLatin {
-    boolean isQ = false;
+
     public void tester() {
         String[] lines = loadStrings("words.txt");
         String[] lines = new String[8]; 
