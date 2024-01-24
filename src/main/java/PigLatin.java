@@ -1,7 +1,6 @@
 public class PigLatin {
-
     public void tester() {
-        String[] lines = loadStrings("words.txt");
+        // String[] lines = loadStrings("words.txt");
         String[] lines = new String[8]; 
         try{
             File myFile = new File("words.txt");
