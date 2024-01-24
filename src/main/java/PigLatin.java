@@ -1,5 +1,5 @@
 public class PigLatin {
-    
+    boolean isQ = false;
     public void tester() {
         // String[] lines = loadStrings("words.txt");
         String[] lines = new String[8]; 
@@ -27,22 +27,28 @@ public class PigLatin {
         //precondition: sWord is a valid String of length greater than 0.
         //postcondition: returns the position of the first vowel in sWord.  If there are no vowels, returns -1
       // your code goes here
-        for(int i=0; i<sWord.length(); i++){
-          if(sWord.substring(i,i+1).equals("a")||sWord.substring(i,i+1).equals("e")||sWord.substring(i,i+1).equals("i")||sWord.substring(i,i+1).equals("o")||sWord.substring(i,i+1).equals("u"))
-            return i;
-        }
-        return -1;
+    for(int i=0; i<sWord.length(); i++){
+      if(sWord.substring(i,i+1).equals("a")||sWord.substring(i,i+1).equals("e")||sWord.substring(i,i+1).equals("i")||sWord.substring(i,i+1).equals("o")||sWord.substring(i,i+1).equals("u")){
+        return i;
+      } else if (sWord.substring(i,i+1).equals("q")){
+        isQ = true;
+        return i;
+      }
+    }
+    return -1;
     }
 
     public String pigLatin(String sWord) {
         //precondition: sWord is a valid String of length greater than 0
         //postcondition: returns the pig latin equivalent of sWord
         // more code should go here
-      if (findFirstVowel(sWord)!=-1){
+      if (findFirstVowel(sWord)!=-1 && isQ == false){
         return (sWord.substring(findFirstVowel(sWord), sWord.length()) + sWord.substring(0,findFirstVowel(sWord)) + "ay");
-      }
+      } 
       if(findFirstVowel(sWord) == -1) {
         return sWord + "ay";
+      } else if (isQ==true){ //if its q
+        return (sWord.substring(findFirstVowel(sWord)+2, sWord.length()) + sWord.substring(0,findFirstVowel(sWord)+2) + "ay");
       }
       else {
     return "ERROR!";
